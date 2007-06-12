@@ -7,7 +7,7 @@ namespace Xstream.Core
     /// Exception that occurs then (de)serialization of an object fails.
     /// </summary>
     [Serializable]
-    public class ConversionException : Exception
+    internal class ConversionException : Exception
     {
         public ConversionException(SerializationInfo info, StreamingContext context) : base(info, context) {}
         public ConversionException(string message) : base(message) {}

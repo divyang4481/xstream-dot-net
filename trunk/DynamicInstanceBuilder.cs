@@ -9,7 +9,7 @@ namespace Xstream.Core
     /// The DynamicInstanceBuilder creates new Types in dynamic 
     /// assemblies, based on existing types.
     /// </summary>
-    public class DynamicInstanceBuilder
+    internal class DynamicInstanceBuilder
     {
         public const string __typePrefix = ".xsdyn~";
 

@@ -9,14 +9,14 @@ namespace Xstream.Core
 	/// Class used to marshal and unmarshal instance objects
 	/// using the Xstream XML.
 	/// </summary>
-	public class XStreamMarshaller
+	internal class XStreamMarshaller
 	{
 		private readonly string __rootElement = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
 	    /// <summary>
 		/// Converts the given object to XML representation,
 		/// using the specific MarshalContext for serialization.
 		/// </summary>
-        public string ToXml( object value, MarshalContext context )
+        public string ToXml( object value, IMarshalContext context )
 		{
 			try
 			{
@@ -52,7 +52,7 @@ namespace Xstream.Core
 		/// Converts the xml string parameter back to a class instance,
 		/// using the specified context for type mapping.
 		/// </summary>
-		public object FromXml( string xml, MarshalContext context )
+		public object FromXml( string xml, IMarshalContext context )
 		{
 			try
 			{

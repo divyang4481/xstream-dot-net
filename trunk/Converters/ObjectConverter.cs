@@ -8,7 +8,7 @@ namespace Xstream.Core.Converters
     /// <summary>
     /// Converts a custom object to xml and back.
     /// </summary>
-    public class ObjectConverter : IConverter
+    internal class ObjectConverter : IConverter
     {
         private static readonly Type __type = typeof (object);
 
@@ -20,7 +20,7 @@ namespace Xstream.Core.Converters
         /// converter instance to register itself in the context
         /// with all appropriate value types and interfaces.
         /// </summary>
-        public void Register(MarshalContext context)
+        public void Register(IMarshalContext context)
         {
             context.RegisterConverter(__type, this);
         }
@@ -29,7 +29,7 @@ namespace Xstream.Core.Converters
         /// Converts the object passed in to its XML representation.
         /// The XML string is written on the XmlTextWriter.
         /// </summary>
-        public void ToXml(object value, FieldInfo field, XmlTextWriter xml, MarshalContext context)
+        public void ToXml(object value, FieldInfo field, XmlTextWriter xml, IMarshalContext context)
         {
             Type type = value != null ? value.GetType() : null;
 
@@ -44,7 +44,7 @@ namespace Xstream.Core.Converters
             WriteAfterStartTag(value, field, xml, context, type);
         }
 
-        public void WriteAfterStartTag(object value, FieldInfo field, XmlTextWriter xml, MarshalContext context, Type type)
+        private void WriteAfterStartTag(object value, FieldInfo field, XmlTextWriter xml, IMarshalContext context, Type type)
         {
             int stackIx = context.GetStackIndex(value);
 
@@ -61,7 +61,7 @@ namespace Xstream.Core.Converters
             context.WriteEndTag(type, field, xml);
         }
 
-        private bool ShouldIgnore(FieldInfo fieldInfo, Type type)
+        private static bool ShouldIgnore(FieldInfo fieldInfo, Type type)
         {
             object[] attributes = fieldInfo.GetCustomAttributes(true);
             foreach (Attribute attribute in attributes)
@@ -72,7 +72,7 @@ namespace Xstream.Core.Converters
             return false;
         }
 
-        private void ToXmlAs(MarshalContext context, Type type, object value, XmlTextWriter xml)
+        private void ToXmlAs(IMarshalContext context, Type type, object value, XmlTextWriter xml)
         {
             // Get all the fields of the object
             FieldInfo[] fields = GetFields(type, value);
@@ -117,7 +117,7 @@ namespace Xstream.Core.Converters
             return type.GetFields(__flags);
         }
 
-        private void AddNullValue(FieldInfo field, XmlTextWriter xml)
+        private static void AddNullValue(FieldInfo field, XmlTextWriter xml)
         {
             xml.WriteStartElement(field.Name);
             xml.WriteAttributeString("null", true.ToString());
@@ -129,9 +129,9 @@ namespace Xstream.Core.Converters
         /// .NET instance object.
         /// </summary>
         /// <returns>Object created from the XML.</returns>
-        public object FromXml(object parent, FieldInfo field, Type type, XmlNode xml, MarshalContext context)
+        public object FromXml(object parent, FieldInfo field, Type type, XmlNode xml, IMarshalContext context)
         {
-            object value = null;
+            object value;
 
             if (xml.Attributes["ref"] != null)
             {
@@ -142,14 +142,11 @@ namespace Xstream.Core.Converters
             {
                 try
                 {
-                    if (value == null)
-                    {
                         // Check if there is a parameterless constructor
                         if (type.IsValueType || type.GetConstructor(__flags, null, new Type[0], null) != null)
                             value = Activator.CreateInstance(type, true);
                         else
                             value = DynamicInstanceBuilder.GetDynamicInstance(type);
-                    }
                 }
                 catch (Exception e)
                 {
@@ -165,7 +162,7 @@ namespace Xstream.Core.Converters
             return value;
         }
 
-        private static void FromXmlAs(MarshalContext context, Type type, object value, XmlNode xml)
+        private static void FromXmlAs(IMarshalContext context, Type type, object value, XmlNode xml)
         {
             FieldInfo[] fields = type.GetFields(__flags);
             Hashtable fieldMap = new Hashtable(fields.Length);

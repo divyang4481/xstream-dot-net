@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace Xstream.Core.Converters
 {
-    public class TargetForceLoader
+    internal class TargetForceLoader
     {
         public static object GetTargetValue(object value) 
         {

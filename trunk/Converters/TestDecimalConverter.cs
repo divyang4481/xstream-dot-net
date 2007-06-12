@@ -29,36 +29,36 @@ namespace Xstream.Converters
             a.b = null;
             Assert.AreEqual(a, xstream.FromXml(xstream.ToXml(a)));
         }
-    }
 
-    public class A
-    {
-        private string a = "a";
-        public string b = "b";
-
-        public A()
+        private class A
         {
-            a = null;
-        }
+            private string a = "a";
+            public string b = "b";
 
-        public override string ToString()
-        {
-            return a + " " + b;
-        }
+            public A()
+            {
+                a = null;
+            }
 
-        public override int GetHashCode()
-        {
-            return (a != null ? a.GetHashCode() : 0) + 29*(b != null ? b.GetHashCode() : 0);
-        }
+            public override string ToString()
+            {
+                return a + " " + b;
+            }
 
-        public override bool Equals(object obj)
-        {
-            if (this == obj) return true;
-            A _a = obj as A;
-            if (_a == null) return false;
-            if (!Equals(a, _a.a)) return false;
-            if (!Equals(b, _a.b)) return false;
-            return true;
+            public override int GetHashCode()
+            {
+                return (a != null ? a.GetHashCode() : 0) + 29 * (b != null ? b.GetHashCode() : 0);
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (this == obj) return true;
+                A _a = obj as A;
+                if (_a == null) return false;
+                if (!Equals(a, _a.a)) return false;
+                if (!Equals(b, _a.b)) return false;
+                return true;
+            }
         }
     }
 }

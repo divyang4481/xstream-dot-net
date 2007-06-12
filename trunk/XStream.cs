@@ -10,7 +10,7 @@ namespace Xstream.Core
     /// </summary>
     public class XStream
     {
-        protected MarshalContext context;
+        protected IMarshalContext context;
         private XStreamMarshaller marshaller;
 
         private XStream(MarshalContext context)
@@ -36,7 +36,10 @@ namespace Xstream.Core
             return marshaller.ToXml(value, context);
         }
 
-        public class GenericObjectHolder
+        /// <summary>
+        /// needed since we cannot serialise a generic object at the source
+        /// </summary>
+        internal class GenericObjectHolder
         {
             public readonly object Value;
 
