@@ -15,7 +15,7 @@ namespace Xstream.Core.Converters
             Type entryPoint = assembly.GetType("Xstream.Core.XStream");
             foreach (Type type in types)
             {
-                if (!IsTextFixture(type) && !type.IsInterface && !type.Equals(entryPoint))
+                if (!IsTextFixture(type) && !type.IsInterface && !type.Equals(entryPoint) && !type.IsAssignableFrom(typeof(ConversionException)))
                     Assert.AreEqual(false, type.IsVisible, type + " is not internal");
             }
             Assert.AreEqual(true, entryPoint.IsVisible);
