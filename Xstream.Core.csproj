@@ -152,6 +152,7 @@
     <Compile Include="Converters\PointerConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\ReleaseTest.cs" />
     <Compile Include="Converters\ShortConverter.cs">
       <SubType>Code</SubType>
     </Compile>

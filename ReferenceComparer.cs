@@ -2,7 +2,7 @@ using System.Collections;
 
 namespace Xstream.Core
 {
-    public class ReferenceComparer : IEqualityComparer
+    internal class ReferenceComparer : IEqualityComparer
     {
         bool IEqualityComparer.Equals(object x, object y)
         {

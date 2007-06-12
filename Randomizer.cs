@@ -2,7 +2,7 @@ using System;
 
 namespace Xstream.Tests
 {
-	public enum RandomEnumForTest
+    internal enum RandomEnumForTest
 	{
 		Lo, Mid, Hi
 	}
@@ -10,7 +10,7 @@ namespace Xstream.Tests
 	/// <summary>
 	/// Creates random primitive and string type values.
 	/// </summary>
-	public class TestRandomizer
+	internal class TestRandomizer
 	{
 		public static readonly Random random = new Random();
 

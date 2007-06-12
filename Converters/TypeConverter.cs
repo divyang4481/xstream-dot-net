@@ -8,7 +8,7 @@ namespace Xstream.Core.Converters
 	/// <summary>
 	/// Converts a System.Type to XML and back.
 	/// </summary>
-	public class TypeConverter : IConverter
+	internal class TypeConverter : IConverter
 	{
 		private static readonly Type __type = typeof( System.Type );
 
@@ -17,7 +17,7 @@ namespace Xstream.Core.Converters
 		/// converter instance to register itself in the context
 		/// with all appropriate value types and interfaces.
 		/// </summary>
-		public void Register( MarshalContext context )
+		public void Register(IMarshalContext context)
 		{
 			context.RegisterConverter( __type, this );
 			context.Alias( "type", __type );
@@ -27,7 +27,7 @@ namespace Xstream.Core.Converters
 		/// Converts the object passed in to its XML representation.
 		/// The XML string is written on the XmlTextWriter.
 		/// </summary>
-		public void ToXml( object value, FieldInfo field, XmlTextWriter xml, MarshalContext context )
+		public void ToXml(object value, FieldInfo field, XmlTextWriter xml, IMarshalContext context)
 		{
 			context.WriteStartTag( __type, field, xml );
 			xml.WriteString( (value as Type).AssemblyQualifiedName );
@@ -39,7 +39,7 @@ namespace Xstream.Core.Converters
 		/// .NET instance object.
 		/// </summary>
 		/// <returns>Object created from the XML.</returns>
-		public object FromXml( object parent, FieldInfo field, Type type, XmlNode xml, MarshalContext context )
+		public object FromXml(object parent, FieldInfo field, Type type, XmlNode xml, IMarshalContext context)
 		{
 			return Type.GetType( xml.InnerText );
 		}

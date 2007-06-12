@@ -10,7 +10,7 @@ namespace Xstream.Core.Converters
 	/// <remarks>
 	/// Not implemented to convert pointer types.
 	/// </remarks>
-	public class PointerConverter : IConverter
+	internal class PointerConverter : IConverter
 	{
 		private static readonly Type __type = typeof( Pointer );
 
@@ -19,7 +19,7 @@ namespace Xstream.Core.Converters
 		/// converter instance to register itself in the context
 		/// with all appropriate value types and interfaces.
 		/// </summary>
-		public void Register( MarshalContext context )
+		public void Register(IMarshalContext context)
 		{
 			context.RegisterConverter( __type, this );
 		}
@@ -28,7 +28,7 @@ namespace Xstream.Core.Converters
 		/// Converts the object passed in to its XML representation.
 		/// The XML string is written on the XmlTextWriter.
 		/// </summary>
-		public void ToXml( object value, FieldInfo field, XmlTextWriter xml, MarshalContext context )
+		public void ToXml(object value, FieldInfo field, XmlTextWriter xml, IMarshalContext context)
 		{
 		}
 
@@ -37,7 +37,7 @@ namespace Xstream.Core.Converters
 		/// .NET instance object.
 		/// </summary>
 		/// <returns>Object created from the XML.</returns>
-		public object FromXml( object parent, FieldInfo field, Type type, XmlNode xml, MarshalContext context )
+		public object FromXml(object parent, FieldInfo field, Type type, XmlNode xml, IMarshalContext context)
 		{
 			return null;
 		}

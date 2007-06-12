@@ -7,7 +7,7 @@ namespace Xstream.Core
     /// <summary>
     /// Understands id of fields of entities. Limitation that Field names should be same
     /// </summary>
-    public class IdFields
+    internal class IdFields
     {
         private Dictionary<Type, FieldInfo> fields = new Dictionary<Type, FieldInfo>(3);
         private string fieldName;

@@ -7,7 +7,7 @@ using Xstream.Tests;
 namespace Xstream.Converters
 {
     [TestFixture]
-    public class TestObjectConverter
+    internal class TestObjectConverter
     {
         protected XStream xstream;
 

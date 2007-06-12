@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Xml;
 using Xstream.Core.Converters;
@@ -13,7 +12,7 @@ namespace Xstream.Core
     /// to convert objects to XML, or convert XML back into the original
     /// (or different) objects.
     /// </summary>
-    public class MarshalContext : IMarshalContext
+    internal class MarshalContext : IMarshalContext
     {
         private static readonly Assembly __mscorlib = typeof (int).Assembly;
         private static readonly Type __objectType = typeof (object);
@@ -35,10 +34,8 @@ namespace Xstream.Core
         /// <summary>
         /// Registers a set of default converters for almost all types.
         /// </summary>
-        public MarshalContext() : this(new ReferenceComparer())
-        {
-        }
-        
+        public MarshalContext() : this(new ReferenceComparer()) {}
+
         public MarshalContext(IEqualityComparer equalityComparer)
         {
             stackMap = new Hashtable(equalityComparer);
@@ -256,13 +253,10 @@ namespace Xstream.Core
 
             return converter;
         }
-        
+
         public virtual ObjectConverter ObjectConverter
         {
-            get
-            {
-                return (ObjectConverter) converterMap[__objectType];                
-            }
+            get { return (ObjectConverter) converterMap[__objectType]; }
         }
 
         /// <summary>
@@ -372,9 +366,7 @@ namespace Xstream.Core
         public virtual bool ContainsType(object o)
         {
             foreach (DictionaryEntry entry in stackMap)
-            {
                 if (EntryKeyIs(entry, o)) return true;
-            }
             return false;
         }
 
@@ -386,9 +378,7 @@ namespace Xstream.Core
         public virtual object GetOfType(object matchingObj)
         {
             foreach (DictionaryEntry entry in stackMap)
-            {
                 if (EntryKeyIs(entry, matchingObj)) return entry.Key;
-            }
             return null;
         }
     }
