@@ -2,10 +2,12 @@
 #labels Featured
 = Introduction =
 
-This is the .Net version of [http://xstream.codehaus.org Joe Walnes' XStream] for Java.
+XStream.Net is the .Net version of [http://xstream.codehaus.org Joe Walnes' XStream] for Java. It is a simple library for serialisation/deserialisation to & from xml.
 
 
-= Details =
-
-XStream.Net is a simple library for serialisation/deserialisation to & from xml.
-
+= Usage =
+{{{
+string serialisedObject = new XStream().ToXml(originalObject);
+object deserialisedObject = new XStream().FromXml(serialisedObject);
+Assert.AreEqual(originalObject, deserialisedObject);
+}}}
