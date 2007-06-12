@@ -1,4 +1,4 @@
-#summary Home
+#summary Summary of XStream.Net
 #labels Featured
 = Introduction =
 
@@ -8,5 +8,4 @@ This is the .Net version of [http://xstream.codehaus.org Joe Walnes' XStream] fo
 = Details =
 
 XStream.Net is a simple library for serialisation/deserialisation to & from xml.
-
 
