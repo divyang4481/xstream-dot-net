@@ -11,7 +11,7 @@ namespace Xstream.Core
     public class XStream
     {
         protected IMarshalContext context;
-        private XStreamMarshaller marshaller;
+        private readonly XStreamMarshaller marshaller;
 
         private XStream(MarshalContext context)
         {
@@ -30,7 +30,7 @@ namespace Xstream.Core
         /// <summary>
         /// Converts the given object to XML representation.
         /// </summary>
-        public string ToXml(object value)
+        public virtual string ToXml(object value)
         {
             if (value.GetType().IsGenericType) value = new GenericObjectHolder(value);
             return marshaller.ToXml(value, context);
@@ -52,7 +52,7 @@ namespace Xstream.Core
         /// <summary>
         /// Converts the xml string parameter back to a class instance.
         /// </summary>
-        public object FromXml(string xml)
+        public virtual object FromXml(string xml)
         {
             object value = marshaller.FromXml(xml, context);
             if (value is GenericObjectHolder) value = ((GenericObjectHolder) value).Value;
