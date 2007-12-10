@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using NUnit.Framework;
 
@@ -12,13 +13,13 @@ namespace Xstream.Core.Converters
         {
             Assembly assembly = Assembly.GetAssembly(GetType());
             Type[] types = assembly.GetTypes();
-            Type entryPoint = assembly.GetType("Xstream.Core.XStream");
+            List<Type> entryPoints = new List<Type>(new Type[] {typeof (XStream), typeof (FileXStream)});
             foreach (Type type in types)
             {
-                if (!IsTextFixture(type) && !type.IsInterface && !type.Equals(entryPoint) && !type.IsAssignableFrom(typeof(ConversionException)))
+                if (!IsTextFixture(type) && !type.IsInterface && !entryPoints.Contains(type) && !type.IsAssignableFrom(typeof (ConversionException)))
                     Assert.AreEqual(false, type.IsVisible, type + " is not internal");
             }
-            Assert.AreEqual(true, entryPoint.IsVisible);
+            entryPoints.ForEach(delegate(Type obj) { Assert.AreEqual(true, obj.IsVisible, string.Format("Type: {0} is not visible", obj)); });
         }
 
         private static bool IsTextFixture(Type type)
