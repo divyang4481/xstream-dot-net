@@ -15,32 +15,40 @@ Assert.AreEqual(originalObject, deserialisedObject);
 == Example ==
 say you have this class:
 
-class SimpleClass? 
+{{{
+class SimpleClass
     {
       private int a; 
       private string x; 
     }
-
+}}}
 and you execute this code:
-
+{{{
     XStream xstream = new XStream(); 
-    SimpleClass? simp = new SimpleClass?(1, 2, "testString");   
-    System.Console.WriteLine?(xstream.ToXml?(simp)); 
+    SimpleClass simp = new SimpleClass(1, 2, "testString");   
+    System.Console.WriteLine(xstream.ToXml(simp)); 
+}}}
 
 you get this:
 
-<SimpleClass? assembly="XstreamTest?, Version=1.0.2342.35727, Culture=neutral, PublicKeyToken?=null"><a>7</a><x>testString</x></SimpleClass?>
+{{{
+<SimpleClass assembly="XstreamTest, Version=1.0.2342.35727, Culture=neutral, PublicKeyToken=null"><a>7</a><x>testString</x></SimpleClass>
+}}}
 
 Now if you add this line: 
-    xstream.Alias("SimpleClass?", typeof(SimpleClass?));
-
+{{{
+    xstream.Alias("SimpleClass", typeof(SimpleClass));
+}}}
 you get: 
+{{{
     <SimpleClass?><a>7</a><x>testString</x></SimpleClass?>
+}}}
 
-you are now free to read this class back in like this:
+you are now free to read this class back in like this. (Note: this should work but it doesn't):
 
-    string classString = "<SimpleClass?><a>1</a><b>2</b><x>testString</x></SimpleClass?>"; 
+{{{
+    string classString = "<SimpleClass><a>1</a><b>2</b><x>testString</x></SimpleClass?>"; 
     XStream xstream = new XStream(); 
-    xstream.Alias("SimpleClass?", typeof(SimpleClass?)); 
-    SimpleClass simpRead = xstream.FromXml?(classString) as SimpleClass; 
-
+    xstream.Alias("SimpleClass", typeof(SimpleClass)); 
+    SimpleClass simpRead = xstream.FromXml(classString) as SimpleClass; 
+}}}
