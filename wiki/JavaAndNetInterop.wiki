@@ -1,0 +1,20 @@
+=Java and .NET interop with XStream=
+
+You can use the Java and .NET XStream projects to inter-operate between Java and .NET. This is a dangerous en devour, but it might be useful in some cases. This page describes some reasons why you might not want to do it, and then runs you through some code to the interop to work properly.
+
+==Should you use XStream for Java and .NET interop?==
+
+I used XStream.NET to interoperate with java. Using the two libraries I could serialize a java object and then deserialize it with .net and then pass the XML over a web service.
+
+I then got carried away and used the .NET java to C# code converter to convert my java classes to .net so I wouldn't have to write the classes I wanted to serialize twice.
+
+I must say, I it was an elegant way to do it, but in practice I think it was flawed for several reasons.
+
+On an implementation level, I had to modify the XStream.net library to support collections. That wasn't too hard. Then I needed to make sure that I didn't capitalize certain variables. Finally, I needed to use Aliases to deserialize properly.
+
+Code generating the .net was a nice trick, but it produced ugly code and I couldn't automate the generation so it was hard to maintain.
+
+The real problem that killed the idea was that I was coupling the Java and .NET implementations to XStream, which does not produce an XSD. So any other code not using XStream would need to do some work to interoperate. 
+
+==How to do it==
+*TBD
