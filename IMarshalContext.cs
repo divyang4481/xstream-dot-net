@@ -23,5 +23,6 @@ namespace Xstream.Core
         void Stack(object o);
         void AddIgnoreAttribute(Type type);
         string GetTypeName(Type type);
+        void AddConverter(IConverter converter);
     }
 }

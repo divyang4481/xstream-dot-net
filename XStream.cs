@@ -73,5 +73,10 @@ namespace Xstream.Core
         {
             context.AddIgnoreAttribute(ignoredAttributeType);
         }
+
+        public void AddConverter(IConverter converter)
+        {
+            context.AddConverter(converter);
+        }
     }
 }

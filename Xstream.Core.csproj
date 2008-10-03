@@ -193,6 +193,7 @@
     </Compile>
     <Compile Include="IdFields.cs" />
     <Compile Include="IMarshalContext.cs" />
+    <Compile Include="IXStream.cs" />
     <Compile Include="MarshalContext.cs">
       <SubType>Code</SubType>
     </Compile>
