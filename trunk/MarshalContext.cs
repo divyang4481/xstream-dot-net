@@ -22,12 +22,12 @@ namespace Xstream.Core
         private static readonly Type __nullType = typeof (NullType);
         private static readonly Type __methodInfoType = typeof (MethodInfo);
 
-        private Hashtable converterMap = new Hashtable(20);
-        private Hashtable aliasMap = new Hashtable();
-        private Hashtable reverseAliasMap = new Hashtable();
+        private readonly Hashtable converterMap = new Hashtable(20);
+        private readonly Hashtable aliasMap = new Hashtable();
+        private readonly Hashtable reverseAliasMap = new Hashtable();
 
-        private ArrayList stackList = new ArrayList();
-        private Hashtable stackMap;
+        private readonly ArrayList stackList = new ArrayList();
+        private readonly Hashtable stackMap;
         private bool useRepository;
         private Type ignoredAttributeType;
 
@@ -74,7 +74,7 @@ namespace Xstream.Core
             set { useRepository = value; }
         }
 
-        private void AddConverter(IConverter converter)
+        public virtual void AddConverter(IConverter converter)
         {
             converter.Register(this);
         }
