@@ -17,6 +17,7 @@ namespace Xstream.Core
         IConverter GetConverter(XmlNode child, ref Type type);
         void RegisterConverter(Type type, IConverter converter);
         Type IgnoredAttributeType { get; }
+        bool CaseSensitive { get; set; }
         IConverter GetConverter(Type type);
         void ClearStack();
         void Alias(string s, Type type);

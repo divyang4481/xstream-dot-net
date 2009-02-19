@@ -27,6 +27,12 @@ namespace Xstream.Core
         {
         }
 
+        public bool CaseSensitive
+        {
+            get { return context.CaseSensitive; }
+            set { context.CaseSensitive = value; }
+        }
+
         /// <summary>
         /// Converts the given object to XML representation.
         /// </summary>
