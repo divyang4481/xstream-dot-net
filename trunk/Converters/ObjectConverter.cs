@@ -168,7 +168,10 @@ namespace Xstream.Core.Converters
             Hashtable fieldMap = new Hashtable(fields.Length);
 
             foreach (FieldInfo objectField in fields)
-                fieldMap[objectField.Name] = objectField;
+                if (objectField.Name.Contains("k__BackingField"))
+                    fieldMap[objectField.Name.Replace("<", "").Replace(">k__BackingField", "")] = objectField;
+                else
+                    fieldMap[objectField.Name] = objectField;
 
             // Handle all fields
             foreach (XmlNode child in xml.ChildNodes)

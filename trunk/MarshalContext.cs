@@ -137,7 +137,8 @@ namespace Xstream.Core
             {
                 // If the field is set, the tag name is the field name
                 tagName = field.Name;
-
+                if (tagName.Contains("k__BackingField"))
+                    tagName = tagName.Replace("<", "").Replace(">k__BackingField", "");
                 // If the object type is different from the field type, add the type information
                 if (type != field.FieldType)
                 {
