@@ -59,6 +59,13 @@ namespace Xstream.Core
             return value;
         }
 
+        public virtual T FromXml<T>(string xml) where T : class
+        {
+            object value = marshaller.FromXml(xml, context);
+            if (value is GenericObjectHolder) value = ((GenericObjectHolder) value).Value;
+            return value as T;
+        }
+
         /// <summary>
         /// Adds a simple string alias for a specific Type.
         /// </summary>
@@ -67,6 +74,11 @@ namespace Xstream.Core
         public void Alias(string alias, Type type)
         {
             context.Alias(alias, type);
+        }
+
+        public void Alias<T>(string alias)
+        {
+            context.Alias(alias,typeof(T));
         }
 
         public void AddIgnoreAttribute(Type ignoredAttributeType)

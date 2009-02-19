@@ -226,6 +226,7 @@
     <Compile Include="XStreamMarshaller.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="XStreamTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
