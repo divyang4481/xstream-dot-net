@@ -119,7 +119,7 @@ namespace Xstream.Core.Converters
 
         private static void AddNullValue(FieldInfo field, XmlTextWriter xml)
         {
-            xml.WriteStartElement(field.Name);
+            xml.WriteStartElement(MarshalContext.auto_property_name(field.Name));
             xml.WriteAttributeString("null", true.ToString());
             xml.WriteEndElement();
         }

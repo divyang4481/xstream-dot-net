@@ -144,9 +144,7 @@ namespace Xstream.Core
             if (field != null)
             {
                 // If the field is set, the tag name is the field name
-                tagName = field.Name;
-                if (tagName.Contains("k__BackingField"))
-                    tagName = tagName.Replace("<", "").Replace(">k__BackingField", "");
+                tagName = auto_property_name(field.Name);
                 // If the object type is different from the field type, add the type information
                 if (type != field.FieldType)
                 {
@@ -180,6 +178,13 @@ namespace Xstream.Core
                 xml.WriteAttributeString("type", typeName);
             if (assemblyName != null)
                 xml.WriteAttributeString("assembly", assemblyName);
+        }
+
+        public static string auto_property_name(string tagName)
+        {
+            if (tagName.Contains("k__BackingField"))
+                tagName = tagName.Replace("<", "").Replace(">k__BackingField", "");
+            return tagName;
         }
 
         /// <summary>
