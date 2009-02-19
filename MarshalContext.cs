@@ -30,6 +30,7 @@ namespace Xstream.Core
         private readonly Hashtable stackMap;
         private bool useRepository;
         private Type ignoredAttributeType;
+        private bool caseSensitive;
 
         /// <summary>
         /// Registers a set of default converters for almost all types.
@@ -40,6 +41,7 @@ namespace Xstream.Core
         {
             stackMap = new Hashtable(equalityComparer);
             useRepository = false;
+            caseSensitive = true;
             AddConverters();
         }
 
@@ -72,6 +74,12 @@ namespace Xstream.Core
         {
             get { return useRepository; }
             set { useRepository = value; }
+        }
+
+        public bool CaseSensitive
+        {
+            get { return caseSensitive; }
+            set { caseSensitive = value; }
         }
 
         public virtual void AddConverter(IConverter converter)

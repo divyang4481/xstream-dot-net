@@ -126,6 +126,7 @@
     <Compile Include="Converters\CharConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\Collections\TestEvent.cs" />
     <Compile Include="Converters\Collections\TestGetterSetter.cs" />
     <Compile Include="Converters\Collections\TestListConverter.cs" />
     <Compile Include="Converters\Collections\TestPerson.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Converters\ObjectConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\ObjectConverterTests.cs" />
     <Compile Include="Converters\PointerConverter.cs">
       <SubType>Code</SubType>
     </Compile>
