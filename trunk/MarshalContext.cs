@@ -25,6 +25,7 @@ namespace Xstream.Core
         private readonly Hashtable converterMap = new Hashtable(20);
         private readonly Hashtable aliasMap = new Hashtable();
         private readonly Hashtable reverseAliasMap = new Hashtable();
+        private readonly Hashtable cdataMap = new Hashtable();
 
         private readonly ArrayList stackList = new ArrayList();
         private readonly Hashtable stackMap;
@@ -68,6 +69,7 @@ namespace Xstream.Core
             AddConverter(new TypeConverter());
             AddConverter(new MethodInfoConverter());
             AddConverter(new StringBuilderConverter());
+            AddConverter(new CDataConverter());
         }
 
         public bool UseRepository
@@ -85,6 +87,35 @@ namespace Xstream.Core
         public virtual void AddConverter(IConverter converter)
         {
             converter.Register(this);
+        }
+
+        public virtual bool IsCData(Type type, string fieldName)
+        {
+            if (cdataMap.Contains(type) 
+                && ((ArrayList)cdataMap[type]).Contains(fieldName)) 
+                return true;
+            return false;
+        }
+
+        public virtual IConverter GetCDataConverter()
+        {
+            return (IConverter) converterMap[typeof (CDataConverter)];
+        }
+
+        public void AddCdata(Type type, string name)
+        {
+            if(!cdataMap.Contains(type))
+            {
+                ArrayList fields = new ArrayList();
+                fields.Add(name);
+                cdataMap.Add(type, fields);
+            }
+            else
+            {
+                ArrayList fields = (ArrayList)cdataMap[type];
+                if (!fields.Contains(name))
+                    fields.Add(name);
+            }
         }
 
         /// <summary>
