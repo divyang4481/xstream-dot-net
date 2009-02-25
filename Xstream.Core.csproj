@@ -42,6 +42,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -97,6 +98,9 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
@@ -123,6 +127,7 @@
     <Compile Include="Converters\ByteConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\CDataConverter.cs" />
     <Compile Include="Converters\CharConverter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -183,6 +188,7 @@
     <Compile Include="Converters\TestArrayConverter.cs" />
     <Compile Include="Converters\TestBooleanConverter.cs" />
     <Compile Include="Converters\TestByteConverter.cs" />
+    <Compile Include="Converters\TestCDataConverter.cs" />
     <Compile Include="Converters\TestCharConverter.cs" />
     <Compile Include="Converters\TestDateTimeConverter.cs" />
     <Compile Include="Converters\TestDecimalConverter.cs" />

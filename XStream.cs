@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq.Expressions;
 
 namespace Xstream.Core
 {
@@ -95,6 +96,17 @@ namespace Xstream.Core
         public void AddConverter(IConverter converter)
         {
             context.AddConverter(converter);
+        }
+
+        public void AddCData(Type type, string name)
+        {
+            context.AddCdata(type, name);
+        }
+        
+        public void AddCData<T>(Expression<Func<T,String>> expression)
+        {
+            string name = expression.Body.ToString().Replace(expression.Parameters[0].Name + ".", "");
+            AddCData(typeof (T), name);
         }
     }
 }

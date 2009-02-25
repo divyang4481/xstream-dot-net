@@ -97,7 +97,11 @@ namespace Xstream.Core.Converters
 
                     if (fieldValue != null)
                     {
-                        IConverter converter = context.GetConverter(fieldValue.GetType());
+                        IConverter converter = null;
+                        if (fieldValue.GetType() == typeof(string) && context.IsCData(type, MarshalContext.auto_property_name(objectField.Name)))
+                            converter = context.GetCDataConverter();
+                        else
+                            converter = context.GetConverter(fieldValue.GetType());
                         converter.ToXml(fieldValue, objectField, xml, context);
                     }
                     else

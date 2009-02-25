@@ -25,5 +25,8 @@ namespace Xstream.Core
         void AddIgnoreAttribute(Type type);
         string GetTypeName(Type type);
         void AddConverter(IConverter converter);
+        bool IsCData(Type type, string fieldName);
+        IConverter GetCDataConverter();
+        void AddCdata(Type type, string name);
     }
 }
