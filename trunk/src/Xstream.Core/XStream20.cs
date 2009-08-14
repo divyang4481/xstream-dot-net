@@ -3,6 +3,14 @@ using System.Collections;
 
 namespace Xstream.Core
 {
+    public class XStream<TypeOfRoot> : XStream
+    {
+        public XStream()
+        {
+            AutoAlias(typeof(TypeOfRoot));
+        }
+    }
+
     /// <summary>
     /// Easy facade class used to (de)serialize objects to and from XML.
     /// This class uses a default MarshalContext that is capable of (de)
@@ -38,8 +46,13 @@ namespace Xstream.Core
 
         public XStream AutoAlias<TypeOfRoot>()
         {
-            string root_namespace = typeof(TypeOfRoot).Namespace;
-            foreach (Type t in typeof(TypeOfRoot).Assembly.GetTypes())
+            return AutoAlias(typeof (TypeOfRoot));            
+        }
+
+        internal XStream AutoAlias(Type TypeOfRoot)
+        {
+            string root_namespace = TypeOfRoot.Namespace;
+            foreach (Type t in TypeOfRoot.Assembly.GetTypes())
             {
                 if (t.Namespace.StartsWith(root_namespace))
                 {

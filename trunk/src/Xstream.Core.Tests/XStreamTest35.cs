@@ -20,7 +20,7 @@ namespace Xstream.Core.Tests
             public void should_deserialize()
             {
                 var xml = "<TestArray35><people><TestPerson35><ID>12</ID><Name>Joe</Name></TestPerson35></people></TestArray35>";
-                var map = new XStream().AutoAlias<TestArray35>();
+                var map = new XStream<TestArray35>();
                 var actual = map.FromXml<TestArray35>(xml);
                 Assert.AreEqual(12, actual.people[0].ID);
             }
