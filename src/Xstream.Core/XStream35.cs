@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Linq.Expressions;
 
 namespace Xstream.Core
@@ -14,7 +13,7 @@ namespace Xstream.Core
         public void AddCData<T>(Expression<Func<T,String>> expression)
         {
             string name = expression.Body.ToString().Replace(expression.Parameters[0].Name + ".", "");
-            AddCData(typeof (T), name);
+            AddCData<T>(name);
         }
     }
 }

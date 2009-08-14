@@ -105,7 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="XStream20.cs" />
+    <Compile Include="XStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -199,6 +199,7 @@
     <Compile Include="XStream35.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="XStreamBase.cs" />
     <Compile Include="XStreamMarshaller.cs">
       <SubType>Code</SubType>
     </Compile>
