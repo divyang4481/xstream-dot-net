@@ -1,46 +1,44 @@
 using System;
 using NUnit.Framework;
 using Xstream.Core.Converters;
-using Xstream.Core.Tests;
-using Xstream.Core.Tests.Converters;
 
-namespace Xstream.Converters
+namespace Xstream.Core.Tests.Converters
 {
-	[TestFixture]
-	public class TestCharConverter : BasePrimitiveTest
-	{
-		[TestFixtureSetUp]
-		public void SetUp()
-		{
-			xmlName			= "char";
-			shortType		= typeof( char );
-			clrType			= typeof( System.Char );
-			converterType	= typeof( CharConverter );
-		}
+    [TestFixture]
+    public class TestCharConverter : BasePrimitiveTest
+    {
+        [TestFixtureSetUp]
+        public void SetUp()
+        {
+            xmlName			= "char";
+            shortType		= typeof( char );
+            clrType			= typeof( System.Char );
+            converterType	= typeof( CharConverter );
+        }
 
-		[Test]
-		public void TestSerializeArray()
-		{
-			char[] array	= { TestRandomizer.GetChar(), TestRandomizer.GetChar(), TestRandomizer.GetChar(), 
-								  TestRandomizer.GetChar(), TestRandomizer.GetChar(), TestRandomizer.GetChar() };
+        [Test]
+        public void TestSerializeArray()
+        {
+            char[] array	= { TestRandomizer.GetChar(), TestRandomizer.GetChar(), TestRandomizer.GetChar(), 
+                        	    TestRandomizer.GetChar(), TestRandomizer.GetChar(), TestRandomizer.GetChar() };
 
-			string xml		= xstream.ToXml( array );
-			char[] reverse	= xstream.FromXml( xml ) as char[];
+            string xml		= xstream.ToXml( array );
+            char[] reverse	= xstream.FromXml( xml ) as char[];
 
-			Assert.IsNotNull( reverse );
-			Assert.AreEqual( array, reverse );
-		}
+            Assert.IsNotNull( reverse );
+            Assert.AreEqual( array, reverse );
+        }
 
-		[Test]
-		public void TestArrayRepetitive()
-		{
-			for ( int i = 0; i < 100; i++ )
-				TestSerializeArray();
-		}
+        [Test]
+        public void TestArrayRepetitive()
+        {
+            for ( int i = 0; i < 100; i++ )
+                TestSerializeArray();
+        }
 
-		protected override object GetValue()
-		{
-			return TestRandomizer.GetChar();
-		}
-	}
+        protected override object GetValue()
+        {
+            return TestRandomizer.GetChar();
+        }
+    }
 }

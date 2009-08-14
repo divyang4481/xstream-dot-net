@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
 using NUnit.Framework;
-using Xstream.Core;
-using Xstream.Core.Tests;
 
-namespace Xstream.Converters
+namespace Xstream.Core.Tests.Converters
 {
     [TestFixture]
     internal class TestObjectConverter
@@ -26,32 +23,6 @@ namespace Xstream.Converters
 
             Assert.IsNotNull(ob);
             ComparePrimitiveObject(oo, ob);
-        }
-
-        [Test]
-        public void TestConvertGeneric()
-        {
-            List<string> o = new List<string>();
-//            GenericContainerObject o = new GenericContainerObject();
-            o.Add("Foo");
-            string xml = xstream.ToXml(o);
-            o = (List<string>) xstream.FromXml(xml);
-
-            Assert.AreEqual(1, o.Count);
-            Assert.AreEqual("Foo", o[0]);
-        }
-
-        [Test]
-        public void ConvertCustomGenericObject()
-        {
-            GenericObject<string> genericObject = new GenericObject<string>();
-            genericObject.Value = "Foo";
-
-            string xml = xstream.ToXml(genericObject);
-            xml = "<a[>/</a[>";
-            genericObject = (GenericObject<string>) xstream.FromXml(xml);
-
-            Assert.AreEqual("Foo", genericObject.Value);
         }
 
         [Test]
@@ -139,17 +110,6 @@ namespace Xstream.Converters
             }
         }
 
-        public class GenericObject<T>
-        {
-            private T value;
-
-            public T Value
-            {
-                get { return value; }
-                set { this.value = value; }
-            }
-        }
-
         private class ChildObject
         {
             private string _Title;
@@ -173,16 +133,6 @@ namespace Xstream.Converters
             public PrimitiveObject Null
             {
                 get { return _Null; }
-            }
-        }
-
-        private class GenericContainerObject
-        {
-            private List<string> strings = new List<string>();
-
-            public List<string> Strings
-            {
-                get { return strings; }
             }
         }
 

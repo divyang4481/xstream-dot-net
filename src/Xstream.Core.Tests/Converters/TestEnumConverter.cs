@@ -1,22 +1,19 @@
-using System;
-using System.Globalization;
 using NUnit.Framework;
-using Xstream.Core.Tests;
 
-namespace Xstream.Converters
+namespace Xstream.Core.Tests.Converters
 {
-	[TestFixture]
-	public class TestEnumConverter : BaseTest
-	{
-		[Test]
-		public void TestSerialize()
-		{
-			RandomEnumForTest re	= TestRandomizer.GetEnum();
+    [TestFixture]
+    public class TestEnumConverter : BaseTest
+    {
+        [Test]
+        public void TestSerialize()
+        {
+            RandomEnumForTest re	= TestRandomizer.GetEnum();
 
-			string xml		= xstream.ToXml( re );
-			RandomEnumForTest rre	= (RandomEnumForTest) xstream.FromXml( xml );
+            string xml		= xstream.ToXml( re );
+            RandomEnumForTest rre	= (RandomEnumForTest) xstream.FromXml( xml );
 
-			Assert.AreEqual( re, rre );
-		}
-	}
+            Assert.AreEqual( re, rre );
+        }
+    }
 }

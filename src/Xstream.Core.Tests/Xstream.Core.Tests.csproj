@@ -51,17 +51,20 @@
   <ItemGroup>
     <Compile Include="Converters\BasePrimitiveTest.cs" />
     <Compile Include="Converters\BaseTest.cs" />
-    <Compile Include="Converters\Collections\TestEvent.cs" />
-    <Compile Include="Converters\Collections\TestGetterSetter.cs" />
+    <Compile Include="Converters\Collections\GenericCollectionTest.cs" />
+    <Compile Include="Converters\Collections\TestEvent35.cs" />
+    <Compile Include="Converters\Collections\TestGetterSetter35.cs" />
     <Compile Include="Converters\Collections\TestListConverter.cs" />
+    <Compile Include="Converters\Collections\TestPeople.cs" />
     <Compile Include="Converters\Collections\TestPerson.cs" />
+    <Compile Include="Converters\Collections\TestPerson35.cs" />
     <Compile Include="Converters\Complex\TestStringBuilderConverter.cs" />
-    <Compile Include="Converters\ObjectConverterTests.cs" />
-    <Compile Include="Converters\ReleaseTest.cs" />
+    <Compile Include="Converters\ObjectConverterTest20.cs" />
+    <Compile Include="Converters\ObjectConverterTest35.cs" />
     <Compile Include="Converters\TestArrayConverter.cs" />
     <Compile Include="Converters\TestBooleanConverter.cs" />
     <Compile Include="Converters\TestByteConverter.cs" />
-    <Compile Include="Converters\TestCDataConverter.cs" />
+    <Compile Include="Converters\TestCDataConverter35.cs" />
     <Compile Include="Converters\TestCharConverter.cs" />
     <Compile Include="Converters\TestDateTimeConverter.cs" />
     <Compile Include="Converters\TestDecimalConverter.cs" />
@@ -80,7 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomEnumForTest.cs" />
     <Compile Include="TestRandomizer.cs" />
-    <Compile Include="XStreamTests.cs" />
+    <Compile Include="XStreamTest20.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xstream.Core\Xstream.Core.csproj">

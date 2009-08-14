@@ -1,8 +1,6 @@
 using NUnit.Framework;
-using Xstream.Core;
-using Xstream.Core.Tests;
 
-namespace Xstream.Converters
+namespace Xstream.Core.Tests.Converters
 {
     [TestFixture]
     public class TestArrayConverter

@@ -1,26 +1,24 @@
 using System;
 using NUnit.Framework;
 using Xstream.Core.Converters;
-using Xstream.Core.Tests;
-using Xstream.Core.Tests.Converters;
 
-namespace Xstream.Converters
+namespace Xstream.Core.Tests.Converters
 {
-	[TestFixture]
-	public class TestGuidConverter : BasePrimitiveTest
-	{
-		[TestFixtureSetUp]
-		public void SetUp()
-		{
-			xmlName			= "guid";
-			shortType		= typeof( System.Guid );
-			clrType			= typeof( System.Guid );
-			converterType	= typeof( GuidConverter );
-		}
+    [TestFixture]
+    public class TestGuidConverter : BasePrimitiveTest
+    {
+        [TestFixtureSetUp]
+        public void SetUp()
+        {
+            xmlName			= "guid";
+            shortType		= typeof( Guid );
+            clrType			= typeof( Guid );
+            converterType	= typeof( GuidConverter );
+        }
 
-		protected override object GetValue()
-		{
-			return TestRandomizer.GetGuid();
-		}
-	}
+        protected override object GetValue()
+        {
+            return TestRandomizer.GetGuid();
+        }
+    }
 }

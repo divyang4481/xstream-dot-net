@@ -14,7 +14,7 @@ namespace Xstream.Converters
 		{
 			xmlName			= "string";
 			shortType		= typeof( string );
-			clrType			= typeof( System.String );
+			clrType			= typeof( String );
 			converterType	= typeof( StringConverter );
 		}
 

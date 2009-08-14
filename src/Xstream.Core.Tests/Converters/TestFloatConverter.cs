@@ -1,41 +1,39 @@
 using System;
 using NUnit.Framework;
 using Xstream.Core.Converters;
-using Xstream.Core.Tests;
-using Xstream.Core.Tests.Converters;
 
-namespace Xstream.Converters
+namespace Xstream.Core.Tests.Converters
 {
-	[TestFixture]
-	public class TestFloatConverter : BasePrimitiveTest
-	{
-	    private static readonly float delta = 0.0000001f;
+    [TestFixture]
+    public class TestFloatConverter : BasePrimitiveTest
+    {
+        private static readonly float delta = 0.0000001f;
 
-		[TestFixtureSetUp]
-		public void SetUp()
-		{
-			xmlName			= "float";
-			shortType		= typeof( float );
-			clrType			= typeof( Single );
-			converterType	= typeof( FloatConverter );
-		}
+        [TestFixtureSetUp]
+        public void SetUp()
+        {
+            xmlName			= "float";
+            shortType		= typeof( float );
+            clrType			= typeof( Single );
+            converterType	= typeof( FloatConverter );
+        }
 
-		[Test]
-		public void TestRepetitive()
-		{
-			for (int i = 0; i < 100; i++ )
-				TestConversion();
-		}
+        [Test]
+        public void TestRepetitive()
+        {
+            for (int i = 0; i < 100; i++ )
+                TestConversion();
+        }
 
 
-	    protected override void AssertEquality(object value, object rvalue)
-	    {
+        protected override void AssertEquality(object value, object rvalue)
+        {
             Assert.AreEqual((float)value, (float)rvalue, delta);
-	    }
+        }
 
-	    protected override object GetValue()
-		{
-			return TestRandomizer.GetFloat();
-		}
-	}
+        protected override object GetValue()
+        {
+            return TestRandomizer.GetFloat();
+        }
+    }
 }

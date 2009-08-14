@@ -1,9 +1,9 @@
 using NUnit.Framework;
-using Xstream.Core.Converters.Collections;
+using Xstream.Core.Tests.Converters.Collections;
 
 namespace Xstream.Core.Tests
 {
-    internal class XStreamTests
+    internal class XStreamTest20
     {
         [TestFixture]
         public class when_using_a_generic_alias
