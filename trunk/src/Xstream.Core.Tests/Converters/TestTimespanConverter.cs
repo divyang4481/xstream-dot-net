@@ -1,6 +1,5 @@
 using System;
 using NUnit.Framework;
-using Xstream.Converters;
 
 namespace Xstream.Core.Tests.Converters
 {

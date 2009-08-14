@@ -1,26 +1,24 @@
 using System;
 using NUnit.Framework;
 using Xstream.Core.Converters;
-using Xstream.Core.Tests;
-using Xstream.Core.Tests.Converters;
 
-namespace Xstream.Converters
+namespace Xstream.Core.Tests.Converters
 {
-	[TestFixture]
-	public class TestBooleanConverter : BasePrimitiveTest
-	{
-		[TestFixtureSetUp]
-		public void SetUp()
-		{
-			xmlName			= "bool";
-			shortType		= typeof( bool );
-			clrType			= typeof( System.Boolean );
-			converterType	= typeof( BooleanConverter );
-		}
+    [TestFixture]
+    public class TestBooleanConverter : BasePrimitiveTest
+    {
+        [TestFixtureSetUp]
+        public void SetUp()
+        {
+            xmlName			= "bool";
+            shortType		= typeof( bool );
+            clrType			= typeof( System.Boolean );
+            converterType	= typeof( BooleanConverter );
+        }
 
-		protected override object GetValue()
-		{
-			return TestRandomizer.GetBool();
-		}
-	}
+        protected override object GetValue()
+        {
+            return TestRandomizer.GetBool();
+        }
+    }
 }

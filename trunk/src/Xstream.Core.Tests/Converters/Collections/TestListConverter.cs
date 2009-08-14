@@ -1,36 +1,34 @@
 using System;
 using System.Collections;
 using NUnit.Framework;
-using Xstream.Core;
-using Xstream.Core.Tests;
 
-namespace Xstream.Converters
+namespace Xstream.Core.Tests.Converters.Collections
 {
-	[TestFixture]
-	public class TestListConverter
-	{
-		[Test]
-		public void TestStreamSimpleArrayList()
-		{
-			ArrayList list	= new ArrayList(5);
-			list.Add( TestRandomizer.GetInt() );
-			list.Add( TestRandomizer.GetString() );
-			list.Add( TestRandomizer.GetDecimal() );
-			list.Add( "last" );
+    [TestFixture]
+    public class TestListConverter
+    {
+        [Test]
+        public void TestStreamSimpleArrayList()
+        {
+            ArrayList list	= new ArrayList(5);
+            list.Add( TestRandomizer.GetInt() );
+            list.Add( TestRandomizer.GetString() );
+            list.Add( TestRandomizer.GetDecimal() );
+            list.Add( "last" );
 				
-			XStream xs		= new XStream();
-			string xml		= xs.ToXml( list );
+            XStream xs		= new XStream();
+            string xml		= xs.ToXml( list );
 
-			Assert.IsNotNull( xml );
-			Assert.IsTrue( xml.Length > 0 );
+            Assert.IsNotNull( xml );
+            Assert.IsTrue( xml.Length > 0 );
 
-			IList rlist		= xs.FromXml( xml ) as IList;
+            IList rlist		= xs.FromXml( xml ) as IList;
 
             Assert.IsNotNull( rlist );
-			Assert.AreEqual( list.Count, rlist.Count );
+            Assert.AreEqual( list.Count, rlist.Count );
 
-			for ( int i = 0; i < list.Count; i++ )
-				Assert.AreEqual( list[i], rlist[i] );
-		}
-	}
+            for ( int i = 0; i < list.Count; i++ )
+                Assert.AreEqual( list[i], rlist[i] );
+        }
+    }
 }
