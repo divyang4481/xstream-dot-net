@@ -51,12 +51,13 @@
   <ItemGroup>
     <Compile Include="Converters\BasePrimitiveTest.cs" />
     <Compile Include="Converters\BaseTest.cs" />
-    <Compile Include="Converters\Collections\GenericCollectionTest.cs" />
+    <Compile Include="Converters\Collections\GenericCollectionTest35.cs" />
     <Compile Include="Converters\Collections\TestArray35.cs" />
     <Compile Include="Converters\Collections\TestEvent35.cs" />
     <Compile Include="Converters\Collections\TestGetterSetter35.cs" />
     <Compile Include="Converters\Collections\TestListConverter.cs" />
     <Compile Include="Converters\Collections\TestPeople.cs" />
+    <Compile Include="Converters\Collections\TestPeople35.cs" />
     <Compile Include="Converters\Collections\TestPerson.cs" />
     <Compile Include="Converters\Collections\TestPerson35.cs" />
     <Compile Include="Converters\Complex\TestStringBuilderConverter.cs" />

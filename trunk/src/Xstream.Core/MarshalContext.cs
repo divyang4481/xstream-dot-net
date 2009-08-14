@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Xml;
 using Xstream.Core.Converters;
@@ -18,6 +19,7 @@ namespace Xstream.Core
         private static readonly Type __objectType = typeof (object);
         private static readonly Type __typeType = typeof (Type);
         private static readonly Type __arrayType = typeof (Array);
+        private static readonly Type __genericListType = typeof(List<>);
         private static readonly Type __enumType = typeof (Enum);
         private static readonly Type __nullType = typeof (NullType);
         private static readonly Type __methodInfoType = typeof (MethodInfo);
@@ -70,6 +72,7 @@ namespace Xstream.Core
             AddConverter(new MethodInfoConverter());
             AddConverter(new StringBuilderConverter());
             AddConverter(new CDataConverter());
+            AddConverter(new GenericListConverter());
         }
 
         public bool UseRepository
@@ -177,7 +180,7 @@ namespace Xstream.Core
                 // If the field is set, the tag name is the field name
                 tagName = auto_property_name(field.Name);
                 // If the object type is different from the field type, add the type information
-                if (type != field.FieldType)
+                if (type != field.FieldType && field.FieldType.GetGenericTypeDefinition() != typeof(List<>))
                 {
                     // Get the aliased version of the type information
                     typeName = reverseAliasMap[type] as string;
@@ -280,7 +283,8 @@ namespace Xstream.Core
             {
                 if (type.IsArray)
                     return converterMap[__arrayType] as IConverter;
-
+                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
+                    return converterMap[__genericListType] as IConverter;
                 if (type.IsEnum)
                     return converterMap[__enumType] as IConverter;
                 if (type.IsSubclassOf(__typeType))

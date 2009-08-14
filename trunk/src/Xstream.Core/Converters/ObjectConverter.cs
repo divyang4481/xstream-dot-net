@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Xml;
 
@@ -88,7 +89,9 @@ namespace Xstream.Core.Converters
                 try
                 {
                     object fieldValue = objectField.GetValue(value);
-                    if (fieldValue != null && fieldValue.GetType().Name.StartsWith("CProxyType") && !fieldValue.GetType().Name.Contains("Hibernate"))
+                    if (fieldValue != null 
+                        && fieldValue.GetType().Name.StartsWith("CProxyType") 
+                        && !fieldValue.GetType().Name.Contains("Hibernate"))
                     {
                         objectField.SetValue(value, null, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance |
                                                           BindingFlags.DeclaredOnly, null, null);
