@@ -1,5 +1,8 @@
 using System;
 using System.Collections;
+using System.IO;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace Xstream.Core
 {   
@@ -85,8 +88,9 @@ namespace Xstream.Core
             return this;
         }        
 
-        public virtual T FromXml<T>(string xml) where T : class
+        protected virtual T FromXml<T>(string xml) where T : class
         {
+            if (dtd_for_validation != string.Empty) validate_string(dtd_for_validation + xml);
             object value = marshaller.FromXml(xml, context);
             if (value is GenericObjectHolder) value = ((GenericObjectHolder)value).Value;
             return value as T;
@@ -99,6 +103,30 @@ namespace Xstream.Core
         {
             if (value.GetType().IsGenericType) value = new GenericObjectHolder(value);
             return marshaller.ToXml(value, context);
+        }
+
+        protected string dtd_for_validation = string.Empty;
+
+        protected XStreamBase ValidateDTD(string dtd)
+        {
+            dtd_for_validation = dtd;
+            return this;
+        }
+
+        protected void validate_string(string xml)
+        {
+            XmlTextReader r = new XmlTextReader(new StringReader(xml));
+            XmlValidatingReader v = new XmlValidatingReader(r);
+            v.ValidationType = ValidationType.DTD;
+            v.ValidationEventHandler += MyValidationEventHandler;
+            while(v.Read()){}
+            v.Close();                            
+        }            
+
+        void MyValidationEventHandler(object sender,
+                                            ValidationEventArgs args)
+        {
+            throw new FormatException("Validation event\n" + args.Message);        
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using Xstream.Core.Tests.Converters;
 using Xstream.Core.Tests.Converters.Collections;
@@ -21,9 +22,45 @@ namespace Xstream.Core.Tests
             {
                 var xml = "<TestArray35><people><TestPerson35><ID>12</ID><Name>Joe</Name></TestPerson35></people></TestArray35>";
                 var map = new XStream<TestArray35>();
-                var actual = map.FromXml<TestArray35>(xml);
+                var actual = map.FromXml(xml);
                 Assert.AreEqual(12, actual.people[0].ID);
             }
         }
+
+        [TestFixture]
+        public class when_using_a_dtd_to_validate_incoming_xml
+        {
+            [Test]
+            [ExpectedException(typeof(FormatException))]
+            public void should_find_an_error()
+            {
+                string dtd = @"<!DOCTYPE TestPerson35 [
+<!ELEMENT TestPerson35 (ID,Nme)>
+<!ELEMENT ID (#PCDATA)>
+<!ELEMENT Nme (#PCDATA)>
+]>";
+                string xml = @"<TestPerson35><ID>12</ID><Name>Test</Name></TestPerson35>";
+                new XStream<TestPerson35>()
+                    .ValidateDTD(dtd)
+                    .FromXml(xml);
+            }
+
+            [Test]
+            public void should_validate()
+            {
+                string dtd = @"<!DOCTYPE TestPerson35 [
+<!ELEMENT TestPerson35 (ID,Name)>
+<!ELEMENT ID (#PCDATA)>
+<!ELEMENT Name (#PCDATA)>
+]>";
+                string xml = @"<TestPerson35><ID>12</ID><Name>Test</Name></TestPerson35>";
+                new XStream()
+                    .AutoAlias<TestPerson35>()
+                    .ValidateDTD(dtd)
+                    .FromXml(xml);
+            }
+
+        }
+
     }
 }

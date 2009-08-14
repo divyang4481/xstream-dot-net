@@ -1,4 +1,5 @@
 using System;
+using System.Xml;
 
 namespace Xstream.Core
 {
@@ -36,7 +37,12 @@ namespace Xstream.Core
         public XStream<TypeOfRoot> Alias<T>(string alias)
         {
             return base.Alias<T>(alias) as XStream<TypeOfRoot>;
-        }        
+        }
+        
+        public XStream<TypeOfRoot> ValidateDTD(string dtd)
+        {
+            return base.ValidateDTD(dtd) as XStream<TypeOfRoot>;
+        }
     }
 
     /// <summary>
@@ -53,6 +59,7 @@ namespace Xstream.Core
         [Obsolete]
         public virtual object FromXml(string xml)
         {
+            if (base.dtd_for_validation != string.Empty) validate_string(dtd_for_validation + xml);
             object value = marshaller.FromXml(xml, context);
             if (value is GenericObjectHolder) value = ((GenericObjectHolder)value).Value;
             return value;
@@ -98,6 +105,16 @@ namespace Xstream.Core
         public XStream Alias<T>(string alias)
         {
             return base.Alias<T>(alias) as XStream;
-        }        
+        }
+        public XStream ValidateDTD(string dtd)
+        {
+            return base.ValidateDTD(dtd) as XStream;
+        }
+
+        public T FromXml<T>(string xml) where T : class
+        {
+            return base.FromXml<T>(xml);
+        }
+
     }
 }
