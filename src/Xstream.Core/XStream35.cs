@@ -1,5 +1,8 @@
 using System;
+using System.IO;
 using System.Linq.Expressions;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace Xstream.Core
 {
@@ -15,5 +18,6 @@ namespace Xstream.Core
             string name = expression.Body.ToString().Replace(expression.Parameters[0].Name + ".", "");
             AddCData<T>(name);
         }
+
     }
 }
