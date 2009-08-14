@@ -52,6 +52,7 @@
     <Compile Include="Converters\BasePrimitiveTest.cs" />
     <Compile Include="Converters\BaseTest.cs" />
     <Compile Include="Converters\Collections\GenericCollectionTest.cs" />
+    <Compile Include="Converters\Collections\TestArray35.cs" />
     <Compile Include="Converters\Collections\TestEvent35.cs" />
     <Compile Include="Converters\Collections\TestGetterSetter35.cs" />
     <Compile Include="Converters\Collections\TestListConverter.cs" />
@@ -83,7 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomEnumForTest.cs" />
     <Compile Include="TestRandomizer.cs" />
+    <Compile Include="XStreamMapTest35.cs" />
     <Compile Include="XStreamTest20.cs" />
+    <Compile Include="XStreamTest35.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xstream.Core\Xstream.Core.csproj">

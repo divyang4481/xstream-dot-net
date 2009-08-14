@@ -36,6 +36,18 @@ namespace Xstream.Core
             set { context.CaseSensitive = value; }
         }
 
+        public XStream AutoAlias<TypeOfRoot>()
+        {
+            string root_namespace = typeof(TypeOfRoot).Namespace;
+            foreach (Type t in typeof(TypeOfRoot).Assembly.GetTypes())
+            {
+                if (t.Namespace.StartsWith(root_namespace))
+                {
+                    Alias(t.FullName.Replace(root_namespace+".", ""), t);
+                }
+            }
+            return this;
+        }
         /// <summary>
         /// Converts the given object to XML representation.
         /// </summary>
@@ -61,6 +73,7 @@ namespace Xstream.Core
         /// <summary>
         /// Converts the xml string parameter back to a class instance.
         /// </summary>
+        [Obsolete]
         public virtual object FromXml(string xml)
         {
             object value = marshaller.FromXml(xml, context);
@@ -73,24 +86,29 @@ namespace Xstream.Core
         /// </summary>
         /// <param name="alias">String alias name.</param>
         /// <param name="type">Type to use the alias for.</param>
-        public void Alias(string alias, Type type)
+        [Obsolete]
+        public XStream Alias(string alias, Type type)
         {
             context.Alias(alias, type);
+            return this;
         }
 
-        public void AddIgnoreAttribute(Type ignoredAttributeType)
+        public XStream AddIgnoreAttribute(Type ignoredAttributeType)
         {
             context.AddIgnoreAttribute(ignoredAttributeType);
+            return this;
         }
 
-        public void AddConverter(IConverter converter)
+        public XStream AddConverter(IConverter converter)
         {
             context.AddConverter(converter);
+            return this;
         }
 
-        public void AddCData(Type type, string name)
+        public XStream AddCData(Type type, string name)
         {
             context.AddCdata(type, name);
+            return this;
         }
         public virtual T FromXml<T>(string xml) where T : class
         {
@@ -99,9 +117,10 @@ namespace Xstream.Core
             return value as T;
         }
 
-        public void Alias<T>(string alias)
+        public XStream Alias<T>(string alias)
         {
             context.Alias(alias,typeof(T));
+            return this;
         }        
     }
 }
