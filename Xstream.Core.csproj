@@ -1,0 +1,219 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{65E47904-3497-4021-A63E-85BEB6D210E4}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Xstream.Core</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Xstream.Core</RootNamespace>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.4.2.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ConditionalConverter.cs" />
+    <Compile Include="ConversionException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\ArrayConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\BasePrimitiveTest.cs" />
+    <Compile Include="Converters\BaseTest.cs" />
+    <Compile Include="Converters\BooleanConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\ByteConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\CharConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\Collections\TestListConverter.cs" />
+    <Compile Include="Converters\Complex\StringBuilderConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\Complex\TestStringBuilderConverter.cs" />
+    <Compile Include="Converters\NoopConverter.cs" />
+    <Compile Include="Converters\DateTimeConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\DecimalConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\DoubleConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\EnumConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\FloatConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\GuidConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\IntConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\LongConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\MethodInfoConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\NullConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\ObjectConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\PointerConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\ReleaseTest.cs" />
+    <Compile Include="Converters\ShortConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\StringConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\TargetForceLoader.cs" />
+    <Compile Include="Converters\TestArrayConverter.cs" />
+    <Compile Include="Converters\TestBooleanConverter.cs" />
+    <Compile Include="Converters\TestByteConverter.cs" />
+    <Compile Include="Converters\TestCharConverter.cs" />
+    <Compile Include="Converters\TestDateTimeConverter.cs" />
+    <Compile Include="Converters\TestDecimalConverter.cs" />
+    <Compile Include="Converters\TestDoubleConverter.cs" />
+    <Compile Include="Converters\TestEnumConverter.cs" />
+    <Compile Include="Converters\TestFloatConverter.cs" />
+    <Compile Include="Converters\TestGuidConverter.cs" />
+    <Compile Include="Converters\TestIntConverter.cs" />
+    <Compile Include="Converters\TestLongConverter.cs" />
+    <Compile Include="Converters\TestMethodInfoConverter.cs" />
+    <Compile Include="Converters\TestObjectConverter.cs" />
+    <Compile Include="Converters\TestShortConverter.cs" />
+    <Compile Include="Converters\TestStringConverter.cs" />
+    <Compile Include="Converters\TestTimespanConverter.cs" />
+    <Compile Include="Converters\TestTypeConverter.cs" />
+    <Compile Include="Converters\TimeSpanConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\TypeConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DynamicInstanceBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileXStream.cs" />
+    <Compile Include="IConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IdFields.cs" />
+    <Compile Include="IMarshalContext.cs" />
+    <Compile Include="IXStream.cs" />
+    <Compile Include="MarshalContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NullType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Randomizer.cs" />
+    <Compile Include="ReferenceComparer.cs" />
+    <Compile Include="XStream.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XStreamMarshaller.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
